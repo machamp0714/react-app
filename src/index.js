@@ -1,18 +1,13 @@
 import React from "react";
 import { render } from "react-dom";
 
-const title = "こんにちは、世界";
-const body = "こちらが本文です。";
+const returnReactElement = () => <h2>text</h2>;
 
-const returnStrings = () => "文字列を返す。";
+const returnReactElement2 = hello => <h2>{hello}</h2>;
 
-var reactElement = (
-  <div>
-    <p>{returnStrings()}</p>
-    <p>{Math.random()}</p>
-    <h2>{title}</h2>
-    <p>{body}</p>
-  </div>
-);
+const returnReactElement3 = (no, name) => {
+  const newStrings = `${no}番目は${name}さんです。`;
+  return <h2>{newStrings}</h2>;
+};
 
-render(reactElement, document.getElementById("root"));
+render(returnReactElement3(1, "nakanishi"), document.getElementById("root"));
