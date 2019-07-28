@@ -1,13 +1,16 @@
 import React from "react";
 import { render } from "react-dom";
 
-const returnReactElement = () => <h2>text</h2>;
-
-const returnReactElement2 = hello => <h2>{hello}</h2>;
-
-const returnReactElement3 = (no, name) => {
-  const newStrings = `${no}番目は${name}さんです。`;
-  return <h2>{newStrings}</h2>;
+// React Component
+const ReturnReactElement = ({ name, music }) => {
+  return (
+    <h2>
+      {name} {music}
+    </h2>
+  );
 };
 
-render(returnReactElement3(1, "nakanishi"), document.getElementById("root"));
+render(
+  <ReturnReactElement name="nakanishi" music="jazz" />,
+  document.getElementById("root")
+);
