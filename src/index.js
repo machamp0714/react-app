@@ -1,16 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
+import { var1, function1, ReactComponent } from "./module";
 
-// React Component
-const ReturnReactElement = ({ name, music }) => {
-  return (
-    <h2>
-      {name} {music}
-    </h2>
-  );
-};
+console.log(var1);
 
-render(
-  <ReturnReactElement name="nakanishi" music="jazz" />,
-  document.getElementById("root")
-);
+function1();
+
+render(<ReactComponent />, document.getElementById("root"));
