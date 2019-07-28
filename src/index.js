@@ -1,9 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import { var1, function1, ReactComponent } from "./module";
+import { ReactComponent } from "./ReactComponent";
 
-console.log(var1);
-
-function1();
-
-render(<ReactComponent />, document.getElementById("root"));
+render(
+  <ReactComponent name="nakanishi" music="jazz" />,
+  document.getElementById("root")
+);
