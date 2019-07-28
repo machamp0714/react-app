@@ -4,9 +4,7 @@ import { render } from "react-dom";
 const title = "こんにちは、世界";
 const body = "こちらが本文です。";
 
-const returnStrings = () => {
-  return "文字列を返す";
-};
+const returnStrings = () => "文字列を返す。";
 
 var reactElement = (
   <div>
