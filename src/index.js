@@ -1,30 +1,39 @@
 import React from "react";
 import { render } from "react-dom";
 
-class Human extends React.Component {
+class H2O extends React.Component {
   constructor(props) {
-    // 必ず必要
     super(props);
-    this.state = { name: "Oide" };
+    this.state = { tmp: 15 };
   }
-  // 必ずrenderメソッドを実装する必要がある
+
   render() {
     return (
-      // コールバック関数の中で使われるthisには注意が必要。
-      <h2 onClick={this.onButtonClick}>
-        {this.state.name} {this.props.age}
-      </h2>
+      <div>
+        <h2>{this.state.tmp}度</h2>
+        <button onClick={this.onPlusClick}>+</button>
+        <button onClick={this.onPlus10Click}>+10</button>
+        <button onClick={this.onMinusClick}>-</button>
+        <button onClick={this.onMinus10Click}>-10</button>
+      </div>
     );
   }
-  // 一般的なメソッド定義だと、thisの参照先が意図したものではなくなってしまう。
-  // onBUttonClick() {
-  //   this.setState({name: "change"});
-  // }
 
-  // create-react-appで作られたReactアプリケーションでは、アロー関数を使うことで回避できる。
-  onButtonClick = () => {
-    this.setState({ name: this.state.name + "san" });
+  onPlusClick = () => {
+    this.setState({ tmp: this.state.tmp + 1 });
+  };
+
+  onPlus10Click = () => {
+    this.setState({ tmp: this.state.tmp + 10 });
+  };
+
+  onMinusClick = () => {
+    this.setState({ tmp: this.state.tmp - 1 });
+  };
+
+  onMinus10Click = () => {
+    this.setState({ tmp: this.state.tmp - 10 });
   };
 }
 
-render(<Human age="30" />, document.getElementById("root"));
+render(<H2O />, document.getElementById("root"));
