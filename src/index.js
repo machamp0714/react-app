@@ -19,10 +19,12 @@ class H2O extends React.Component {
   }
 
   render() {
+    const { tmp } = this.state;
+
     return (
-      <div className={this.H2Ostate(this.state.tmp)}>
+      <div className={this.H2Ostate(tmp)}>
         <h2>
-          phase: {this.H2Ostate(this.state.tmp)} {this.state.tmp}度
+          phase: {this.H2Ostate(tmp)} {tmp}度
         </h2>
         <button onClick={this.onPlusClick}>+</button>
         <button onClick={this.onPlus10Click}>+10</button>
@@ -33,19 +35,23 @@ class H2O extends React.Component {
   }
 
   onPlusClick = () => {
-    this.setState({ tmp: this.state.tmp + 1 });
+    const { tmp } = this.state;
+    this.setState({ tmp: tmp + 1 });
   };
 
   onPlus10Click = () => {
-    this.setState({ tmp: this.state.tmp + 10 });
+    const { tmp } = this.state;
+    this.setState({ tmp: tmp + 10 });
   };
 
   onMinusClick = () => {
-    this.setState({ tmp: this.state.tmp - 1 });
+    const { tmp } = this.state;
+    this.setState({ tmp: tmp - 1 });
   };
 
   onMinus10Click = () => {
-    this.setState({ tmp: this.state.tmp - 10 });
+    const { tmp } = this.state;
+    this.setState({ tmp: tmp - 10 });
   };
 }
 
