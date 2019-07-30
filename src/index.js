@@ -1,58 +1,15 @@
 import React from "react";
 import { render } from "react-dom";
-import "./App.css";
 
-class H2O extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { tmp: 15 };
-  }
+const todos = [
+  { id: 1, title: "title1" },
+  { id: 2, title: "title2" },
+  { id: 3, title: "title3" },
+  { id: 4, title: "title4" }
+];
 
-  H2Ostate(tmp) {
-    if (tmp < 0) {
-      return "ice";
-    }
-    if (tmp >= 100) {
-      return "steam";
-    }
-    return "water";
-  }
+const deletedTargetId = 3;
 
-  render() {
-    const { tmp } = this.state;
+const deletedArray = todos.filter(todo => todo.id !== deletedTargetId);
 
-    return (
-      <div className={this.H2Ostate(tmp)}>
-        <h2>
-          phase: {this.H2Ostate(tmp)} {tmp}度
-        </h2>
-        <button onClick={this.onPlusClick}>+</button>
-        <button onClick={this.onPlus10Click}>+10</button>
-        <button onClick={this.onMinusClick}>-</button>
-        <button onClick={this.onMinus10Click}>-10</button>
-      </div>
-    );
-  }
-
-  onPlusClick = () => {
-    const { tmp } = this.state;
-    this.setState({ tmp: tmp + 1 });
-  };
-
-  onPlus10Click = () => {
-    const { tmp } = this.state;
-    this.setState({ tmp: tmp + 10 });
-  };
-
-  onMinusClick = () => {
-    const { tmp } = this.state;
-    this.setState({ tmp: tmp - 1 });
-  };
-
-  onMinus10Click = () => {
-    const { tmp } = this.state;
-    this.setState({ tmp: tmp - 10 });
-  };
-}
-
-render(<H2O />, document.getElementById("root"));
+console.log(deletedArray);
