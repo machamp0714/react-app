@@ -7,10 +7,22 @@ class H2O extends React.Component {
     this.state = { tmp: 15 };
   }
 
+  H2Ostate(tmp) {
+    if (tmp < 0) {
+      return "ice";
+    }
+    if (tmp >= 100) {
+      return "steam";
+    }
+    return "water";
+  }
+
   render() {
     return (
       <div>
-        <h2>{this.state.tmp}度</h2>
+        <h2>
+          phase: {this.H2Ostate(this.state.tmp)} {this.state.tmp}度
+        </h2>
         <button onClick={this.onPlusClick}>+</button>
         <button onClick={this.onPlus10Click}>+10</button>
         <button onClick={this.onMinusClick}>-</button>
