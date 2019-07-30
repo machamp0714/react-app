@@ -8,8 +8,15 @@ const todos = [
   { id: 4, title: "title4" }
 ];
 
-const deletedTargetId = 3;
+const Todos = ({ todos }) => {
+  const list = todos.map(todo => {
+    return (
+      <li>
+        {todo.id} {todo.title}
+      </li>
+    );
+  });
+  return <ul>{list}</ul>;
+};
 
-const deletedArray = todos.filter(todo => todo.id !== deletedTargetId);
-
-console.log(deletedArray);
+render(<Todos todos={todos} />, document.getElementById("root"));
