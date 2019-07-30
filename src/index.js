@@ -1,22 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
+import { TodoApp } from "./TodoApp";
 
-const todos = [
-  { id: 1, title: "title1" },
-  { id: 2, title: "title2" },
-  { id: 3, title: "title3" },
-  { id: 4, title: "title4" }
-];
-
-const Todos = ({ todos }) => {
-  const list = todos.map(todo => {
-    return (
-      <li>
-        {todo.id} {todo.title}
-      </li>
-    );
-  });
-  return <ul>{list}</ul>;
-};
-
-render(<Todos todos={todos} />, document.getElementById("root"));
+render(<TodoApp />, document.getElementById("root"));
