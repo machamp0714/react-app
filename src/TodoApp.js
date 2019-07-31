@@ -6,12 +6,7 @@ export class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [
-        { id: 0, title: "title0" },
-        { id: 1, title: "title1" },
-        { id: 2, title: "title2" },
-        { id: 3, title: "title3" }
-      ],
+      todos: [],
       nextId: 0
     };
   }
@@ -20,9 +15,16 @@ export class TodoApp extends React.Component {
     return (
       <div>
         <h2>TodoApp</h2>
-        <AddTodo />
+        <AddTodo addTodo={this.addTodo} />
         <List todos={this.state.todos} />
       </div>
     );
   }
+
+  addTodo = title => {
+    this.setState({
+      todos: [...this.state.todos, { id: this.state.nextId, title: title }],
+      nextId: this.state.nextId + 1
+    });
+  };
 }
