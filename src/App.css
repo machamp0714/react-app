@@ -1,0 +1,19 @@
+body {
+  background-color: wheat;
+}
+
+.list {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 10%;
+  list-style: none;
+}
+
+.image {
+  width: 100%;
+}

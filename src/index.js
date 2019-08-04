@@ -3,6 +3,7 @@ import { render } from "react-dom";
 // import { TodoApp } from "./TodoApp";
 import axios from "axios";
 import { Search } from "./Components/Search";
+import "./App.css";
 
 // render(<TodoApp />, document.getElementById("root"));
 
@@ -63,19 +64,19 @@ class App extends React.Component {
     const imageList = list.map(url => {
       // 必ず閉じタグが必要！！
       return (
-        <li>
-          <img src={url} alt="猫画像" />
+        <li className="item">
+          <img className="image" src={url} alt="猫画像" />
         </li>
       );
     });
 
-    return <ul>{imageList}</ul>;
+    return <ul className="list">{imageList}</ul>;
   }
 
   giphyApi = query => {
     const q = query;
     const key = "BlLVN1kAzi2C5fqMynCUpbxWhqa6qOxL";
-    const limit = 10;
+    const limit = 30;
     const url = `https://api.giphy.com/v1/gifs/search?q=${q}&api_key=${key}&limit=${limit}`;
 
     axios.get(url).then(res => {
