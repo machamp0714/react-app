@@ -43,17 +43,49 @@ import axios from "axios";
 
 // render(<App />, document.getElementById("root"));
 
-const search = "cat";
-const key = "BlLVN1kAzi2C5fqMynCUpbxWhqa6qOxL";
-const limit = 3;
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { gifUrlList: [] };
+  }
 
-const url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}&limit=${limit}`;
+  render() {
+    return (
+      <div>
+        <button onClick={this.giphyApi}>Do</button>
+        {this.gifList(this.state.gifUrlList)}
+      </div>
+    );
+  }
 
-axios.get(url).then(res => {
-  const data = res.data.data;
-  const imageURL = data[0].images.downsized.url;
-  const img = document.createElement("img");
-  img.src = imageURL;
+  componentDidMount() {
+    this.giphyApi();
+  }
 
-  document.body.appendChild(img);
-});
+  gifList = list => {
+    const img = document.createElement("img");
+    const gifList = list.map(url => {
+      img.src = url;
+      return <li>{img}</li>;
+    });
+
+    return <ul>{gifList}</ul>;
+  };
+
+  giphyApi = () => {
+    const search = "cat";
+    const key = "BlLVN1kAzi2C5fqMynCUpbxWhqa6qOxL";
+    const limit = 3;
+    const url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}&limit=${limit}`;
+
+    axios.get(url).then(res => {
+      const data = res.data.data;
+      const imageUrlList = data.map(e => {
+        return e.images.downsized.url;
+      });
+      this.setState({ gifUrlList: imageUrlList });
+    });
+  };
+}
+
+render(<App />, document.getElementById("root"));
