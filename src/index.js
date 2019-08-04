@@ -50,32 +50,30 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <button onClick={this.giphyApi}>Do</button>
-        {this.gifList(this.state.gifUrlList)}
-      </div>
-    );
+    return <div>{this.renderImgaeList(this.state.gifUrlList)}</div>;
+  }
+
+  renderImgaeList(list) {
+    const imageList = list.map(url => {
+      // 必ず閉じタグが必要！！
+      return (
+        <li>
+          <img src={url} alt="猫画像" />
+        </li>
+      );
+    });
+
+    return <ul>{imageList}</ul>;
   }
 
   componentDidMount() {
     this.giphyApi();
   }
 
-  gifList = list => {
-    const img = document.createElement("img");
-    const gifList = list.map(url => {
-      img.src = url;
-      return <li>{img}</li>;
-    });
-
-    return <ul>{gifList}</ul>;
-  };
-
   giphyApi = () => {
     const search = "cat";
     const key = "BlLVN1kAzi2C5fqMynCUpbxWhqa6qOxL";
-    const limit = 3;
+    const limit = 10;
     const url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}&limit=${limit}`;
 
     axios.get(url).then(res => {
