@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 // import { TodoApp } from "./TodoApp";
 import axios from "axios";
+import { Search } from "./Components/Search";
 
 // render(<TodoApp />, document.getElementById("root"));
 
@@ -50,7 +51,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <div>{this.renderImgaeList(this.state.gifUrlList)}</div>;
+    return (
+      <div>
+        <Search search={this.giphyApi} />
+        {this.renderImgaeList(this.state.gifUrlList)}
+      </div>
+    );
   }
 
   renderImgaeList(list) {
@@ -66,15 +72,11 @@ class App extends React.Component {
     return <ul>{imageList}</ul>;
   }
 
-  componentDidMount() {
-    this.giphyApi();
-  }
-
-  giphyApi = () => {
-    const search = "cat";
+  giphyApi = query => {
+    const q = query;
     const key = "BlLVN1kAzi2C5fqMynCUpbxWhqa6qOxL";
     const limit = 10;
-    const url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}&limit=${limit}`;
+    const url = `https://api.giphy.com/v1/gifs/search?q=${q}&api_key=${key}&limit=${limit}`;
 
     axios.get(url).then(res => {
       const data = res.data.data;
