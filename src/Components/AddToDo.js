@@ -1,6 +1,6 @@
 import React from "react";
 
-export class List extends React.Component {
+export class AddToDo extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -8,7 +8,7 @@ export class List extends React.Component {
   render = () => {
     return (
       <div>
-        <h2>List</h2>
+        <h2>AddToDo</h2>
       </div>
     );
   };
