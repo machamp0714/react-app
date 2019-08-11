@@ -7,11 +7,12 @@ export class AddToDo extends React.Component {
   }
 
   render = () => {
+    const { title } = this.state;
     return (
       <div>
         <h2>AddToDo</h2>
         <form onSubmit={this.handleSubmit}>
-          <input value={this.state.title} onChange={this.handleChange} />
+          <input value={title} onChange={this.handleChange} />
           <input type="submit" value="Add ToDo" />
         </form>
       </div>

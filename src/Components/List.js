@@ -6,13 +6,15 @@ export class List extends React.Component {
   }
 
   render = () => {
-    const list = this.props.todos.map(todo => {
+    const { todos, removeToDo } = this.props;
+    const list = todos.map(todo => {
       return (
-        <li>
+        // 配列を使う場合はuniqueなkeyを持たせるひつようがある。
+        <li key={todo.id}>
           {todo.id} {todo.title}{" "}
           <button
             onClick={() => {
-              this.props.removeToDo(todo.id);
+              removeToDo(todo.id);
             }}
           >
             delete

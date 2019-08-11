@@ -12,25 +12,28 @@ export class ToDoApp extends React.Component {
   }
 
   render = () => {
+    const { todos } = this.state;
     return (
       <div>
         <h2>ToDoApp</h2>
         <AddToDo addToDo={this.addToDo} />
-        <List todos={this.state.todos} removeToDo={this.removeToDo} />
+        <List todos={todos} removeToDo={this.removeToDo} />
       </div>
     );
   };
 
   addToDo = title => {
+    const { todos, nextId } = this.state;
     this.setState({
-      todos: [...this.state.todos, { id: this.state.nextId + 1, title: title }],
-      nextId: this.state.nextId + 1
+      todos: [...todos, { id: nextId + 1, title: title }],
+      nextId: nextId + 1
     });
   };
 
   removeToDo = id => {
+    const { todos } = this.state;
     this.setState({
-      todos: this.state.todos.filter(todo => {
+      todos: todos.filter(todo => {
         return todo.id !== id;
       })
     });
